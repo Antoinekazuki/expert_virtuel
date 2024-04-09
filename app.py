@@ -9,9 +9,9 @@ wide_space_default()
 
 col1, mid, col2 = st.columns([1,1,20])
 with col1:
-    st.image('Media/logo.png', width=100)
+    st.image('Media/logo.png', width=50)
 with col2:
-    st.title('Mon expert virtuel*')
+    st.title('Mon expert virtuel')
 
 
 disclaimer_text ='*\* Les informations à caractère médical ne sont pas destinées à remplacer la consultation d\'un professionnel de la santé.*'
@@ -35,7 +35,7 @@ else :
 
 st.markdown("""#### A votre tour maintenant, posez vos questions !""")
 
-st.markdown('Exemples :  \n*Pourquoi les os sont-ils durs ?*  \n*Comment fabrique-t-on un vaccin ?*')
+#st.markdown('Exemples :  \n*Pourquoi les os sont-ils durs ?*  \n*Comment fabrique-t-on un vaccin ?*')
 
 client = OpenAI()
 
