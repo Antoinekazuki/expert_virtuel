@@ -6,10 +6,10 @@ def wide_space_default():
 
 wide_space_default()
 
-st.image('Media/logo.png', width=100)
+st.image('Media/logo.png', width=500)
 st.title('Mon expert virtuel')
 
-disclaimer_text ='*\* Les informations à caractère médical ne sont pas destinées à remplacer la consultation d\'un professionnel de la santé.*'
+disclaimer_text ='*\* Les informations à caractère médical ne remplacent pas la consultation d\'un professionnel de la santé.*'
 
 profil_choice = st.radio('Choisis ton expert :', ('Le professeur des écoles (*pour les enfants*)', 'Le journaliste (*synthétique*)', 'Le scientifique (*technique*)'))
 
