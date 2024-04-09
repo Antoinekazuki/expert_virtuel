@@ -23,8 +23,6 @@ profil_choice = None
 
 profil_choice = st.radio('', ('Le professeur des écoles (*pour les enfants*)', 'Le journaliste (*synthétique*)', 'Le scientifique (*technique*)'), index=None, label_visibility="collapsed")
 
-
-
 if profil_choice == 'Le professeur des écoles (*pour les enfants*)':
     profil = 'Tu es un médecin. Tu t\'adresses à des enfants et fais des réponses très imagées en utilisant notamment des métaphores. Tu réponds en 5 lignes maximum. Tu ne fais que répondre aux questions sans faire de fausses promesses aux patients.'
     st.markdown('- C\'est un spécialiste de la médecine* qui aime répondre aux questions médicales du grand public, et ce, de façon **imagée** et synthétique.  \n - Il adore les **métaphores**.')
@@ -46,36 +44,35 @@ elif profil_choice == 'Le journaliste (*synthétique*)':
     st.markdown(message_action_adulte)
     st.markdown(exemples_text_adulte)
 
+if profil_choice is not None:
 
+    client = OpenAI()
 
-client = OpenAI()
+    if "openai_model" not in st.session_state:
+        st.session_state["openai_model"] = "gpt-3.5-turbo"
 
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
 
-if "openai_model" not in st.session_state:
-    st.session_state["openai_model"] = "gpt-3.5-turbo"
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+                st.markdown(message["content"])
 
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+    if prompt := st.chat_input("Posez votre question dans ce chat"):
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user", avatar='🧑🏼'):
+            st.markdown(prompt)
 
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+        with st.chat_message("system", avatar='🧑🏻‍⚕️'):
+            stream = client.chat.completions.create(
+                model=st.session_state["openai_model"],
 
-if prompt := st.chat_input("Posez votre question dans ce chat"):
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user"):
-        st.markdown(prompt)
+                messages=[
+                    {"role": "system", "content": profil},
+                    {"role": "user", "content": prompt}
+                ],
 
-    with st.chat_message("system", avatar='🧑🏻‍⚕️'):
-        stream = client.chat.completions.create(
-            model=st.session_state["openai_model"],
-
-            messages=[
-                {"role": "system", "content": profil},
-                {"role": "user", "content": prompt}
-            ],
-
-            stream=True,
-        )
-        response = st.write_stream(stream)
-    st.session_state.messages.append({"role": "system", "content": response})
+                stream=True,
+            )
+            response = st.write_stream(stream)
+        st.session_state.messages.append({"role": "system", "content": response})
