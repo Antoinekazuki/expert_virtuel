@@ -35,7 +35,7 @@ else :
 
 st.markdown("""#### A votre tour maintenant, posez vos questions !""")
 
-#st.markdown('Exemples :  \n*Pourquoi les os sont-ils durs ?*  \n*Comment fabrique-t-on un vaccin ?*')
+st.markdown('Exemples :  \n*Pourquoi les os sont-ils durs ?* *Comment fabrique-t-on un vaccin ?*')
 
 client = OpenAI()
 
