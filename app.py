@@ -16,7 +16,8 @@ message_action_enfant = '## 2. Maintenant, pose lui toutes tes questions !'
 
 disclaimer_text ='*\* Les informations à caractère médical ne remplacent pas la consultation d\'un professionnel de la santé.*'
 
-exemples_text = 'Exemples : *Pourquoi les os sont-ils durs ?* *Comment fabrique-t-on un vaccin ?*'
+exemples_text_enfant = 'Exemples : *Pourquoi les os sont-ils durs ?* *c\'est quoi un virus ?*'
+exemples_text_adulte = 'Exemples : *Tumeur bénigne d\'une tumeur maligne, quelle différence ?* *Comment fabrique-t-on un vaccin ?*'
 
 profil_choice = None
 
@@ -29,18 +30,21 @@ if profil_choice == 'Le professeur des écoles (*pour les enfants*)':
     st.markdown('- C\'est un spécialiste de la médecine* qui aime répondre aux questions médicales du grand public, et ce, de façon **imagée** et synthétique.  \n - Il adore les **métaphores**.')
     st.markdown(disclaimer_text)
     st.markdown(message_action_enfant)
+    st.markdown(exemples_text_enfant)
 
 elif profil_choice == 'Le scientifique (*technique*)':
     profil = 'Tu es un médecin. Tu ne réponds qu\'à des questions en lien avec la médecine. Tu détailles au maximum tes réponses. Tu ne fais que répondre aux questions sans faire de fausses promesses aux patients.'
     st.markdown('- C\'est un spécialiste de la médecine* qui aime aller dans le coeur d\'un sujet et partager le maximum de **détails**.  \n - Il ne répond qu\'aux questions médicales.')
     st.markdown(disclaimer_text)
     st.markdown(message_action_adulte)
+    st.markdown(exemples_text_adulte)
 
 elif profil_choice == 'Le journaliste (*synthétique*)':
     profil = 'Tu es un médecin. Tu ne réponds qu\'à des questions en lien avec la médecine. Tu réponds en 5 lignes maximum dans un style journalistique si cela est pertinent.'
     st.markdown('- C\'est un spécialiste de la médecine* qui aime **synthétiser** les concepts en quelques lignes quand cela est possible.  \n - Il ne répond qu\'aux questions médicales.')
     st.markdown(disclaimer_text)
     st.markdown(message_action_adulte)
+    st.markdown(exemples_text_adulte)
 
 
 
