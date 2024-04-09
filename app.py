@@ -10,7 +10,7 @@ st.image('Media/logo.png', width=200)
 
 st.title('Mon expert virtuel*')
 
-st.markdown('- Il possède des connaissances en oncologie.  \n- Il aime répondre aux questions médicales du grand public, et ce, de façon imagée et synthétique.  \n - Il adore les métaphores.')
+st.markdown('- C\'est un spécialiste en oncologie.  \n- Il aime répondre aux questions médicales du grand public, et ce, de façon imagée et synthétique.  \n - Il adore les métaphores.')
 st.markdown('*\* L\'expert virtuel n\'est pas médecin, il ne fournit que des renseignements d\'ordre général.  \nLes informations à caractère médical ne sont pas destinées à remplacer la consultation d\'un professionnel de la santé.*')
 st.markdown("""#### A votre tour maintenant, posez vos questions !""")
 
