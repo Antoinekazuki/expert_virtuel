@@ -7,30 +7,42 @@ def wide_space_default():
 wide_space_default()
 
 st.image('Media/logo.png', width=80)
-st.title('Mon expert virtuel')
+st.markdown('''
+             ## 1. Choisi ton expert :
+             ''')
+
+message_action_adulte = '## 2. A votre tour maintenant, vous pouvez lui poser vos questions !'
+message_action_enfant = '## 2. Maintenant, pose lui toutes tes questions !'
 
 disclaimer_text ='*\* Les informations à caractère médical ne remplacent pas la consultation d\'un professionnel de la santé.*'
 
-profil_choice = st.radio('Choisis ton expert :', ('Le professeur des écoles (*pour les enfants*)', 'Le journaliste (*synthétique*)', 'Le scientifique (*technique*)'))
+exemples_text = 'Exemples : *Pourquoi les os sont-ils durs ?* *Comment fabrique-t-on un vaccin ?*'
+
+profil_choice = None
+
+profil_choice = st.radio('', ('Le professeur des écoles (*pour les enfants*)', 'Le journaliste (*synthétique*)', 'Le scientifique (*technique*)'), index=None, label_visibility="collapsed")
+
+
 
 if profil_choice == 'Le professeur des écoles (*pour les enfants*)':
     profil = 'Tu es un médecin. Tu t\'adresses à des enfants et fais des réponses très imagées en utilisant notamment des métaphores. Tu réponds en 5 lignes maximum. Tu ne fais que répondre aux questions sans faire de fausses promesses aux patients.'
-    st.markdown('- C\'est un spécialiste de la médecine qui aime répondre aux questions médicales du grand public, et ce, de façon **imagée** et synthétique.  \n - Il adore les **métaphores**.')
+    st.markdown('- C\'est un spécialiste de la médecine* qui aime répondre aux questions médicales du grand public, et ce, de façon **imagée** et synthétique.  \n - Il adore les **métaphores**.')
     st.markdown(disclaimer_text)
+    st.markdown(message_action_enfant)
 
 elif profil_choice == 'Le scientifique (*technique*)':
     profil = 'Tu es un médecin. Tu ne réponds qu\'à des questions en lien avec la médecine. Tu détailles au maximum tes réponses. Tu ne fais que répondre aux questions sans faire de fausses promesses aux patients.'
-    st.markdown('- C\'est un spécialiste de la médecine qui aime aller dans le coeur d\'un sujet et partager le maximum de **détails**.  \n - Il ne répond qu\'aux questions médicales.')
+    st.markdown('- C\'est un spécialiste de la médecine* qui aime aller dans le coeur d\'un sujet et partager le maximum de **détails**.  \n - Il ne répond qu\'aux questions médicales.')
     st.markdown(disclaimer_text)
+    st.markdown(message_action_adulte)
 
-else :
+elif profil_choice == 'Le journaliste (*synthétique*)':
     profil = 'Tu es un médecin. Tu ne réponds qu\'à des questions en lien avec la médecine. Tu réponds en 5 lignes maximum dans un style journalistique si cela est pertinent.'
-    st.markdown('- C\'est un spécialiste de la médecine qui aime **synthétiser** les concepts en quelques lignes quand cela est possible.  \n - Il ne répond qu\'aux questions médicales.')
+    st.markdown('- C\'est un spécialiste de la médecine* qui aime **synthétiser** les concepts en quelques lignes quand cela est possible.  \n - Il ne répond qu\'aux questions médicales.')
     st.markdown(disclaimer_text)
+    st.markdown(message_action_adulte)
 
-st.markdown("""#### A votre tour maintenant, posez vos questions !""")
 
-st.markdown('Exemples : *Pourquoi les os sont-ils durs ?* *Comment fabrique-t-on un vaccin ?*')
 
 client = OpenAI()
 
