@@ -6,7 +6,7 @@ def wide_space_default():
 
 wide_space_default()
 
-st.image('Media/logo.png', width=500)
+st.image('Media/logo.png', width=80)
 st.title('Mon expert virtuel')
 
 disclaimer_text ='*\* Les informations à caractère médical ne remplacent pas la consultation d\'un professionnel de la santé.*'
